@@ -545,3 +545,86 @@ def last_digit(a, b):
     num = pow(a, res)
     return num % 10
   
+string='432432'
+def increment_string22(strng):
+    num ="0123456789"
+    num = list(num)
+    count=0
+    for x in strng:
+        if x in num:
+            count+=1
+    strng = list(strng)
+    if count ==0:
+        strng.append('1')
+        return ''.join(strng)    
+    num2=[]
+    last_pos=-1
+    while count>0:
+        num2.append(strng[last_pos])
+        del strng[-1]
+        count-=1
+    num2 = num2[::-1]
+    len_num2 = len(num2)
+    num2= int(''.join(num2))+1
+    if len(list(str(num2)))<len_num2:
+      return ''.join(strng)+'0'*(len_num2-len(list(str(num2))))+str(num2)
+      
+    return ''.join(strng)+str(num2)
+
+
+def increment_string(string):
+  num ="0123456789"
+  num = list(num)
+  string = list(string)
+  if len(string)==0:
+    return '1'
+  if string[-1] not in num:
+    return ''.join(string)+str('1')
+  i=-1
+  count=0
+  numbs=[]
+  while string[i] in num and len(string)>1:
+    count+=1
+    numbs.append(string[i])
+    print(string[i])
+    del string[i]
+  numbs =numbs[::-1]
+  lenofNumbs = len(numbs)
+  numbs= int(''.join(numbs))+1
+  if len(list(str(numbs)))<lenofNumbs:
+    return ''.join(string)+'0'*(lenofNumbs-len(list(str(numbs))))+str(numbs)
+      
+  return ''.join(string)+str(numbs)
+  
+def rgb(r, g, b):
+    # your code here :)
+    lisst=[r,g,b]
+    for i in range(0,len(lisst)):
+      if lisst[i]>255:
+        lisst[i]=255
+      if lisst[i]<0:
+        lisst[i]=0
+      
+    lisst= [hex(x)for x in lisst]
+    lisst =[x[2:]for x in lisst]
+    print(list)
+    for i in range(0,len(lisst)):
+      if len(lisst[i])==1:
+        lisst[i]= str('0')+str(lisst[i])
+    x=list(''.join(lisst))
+    for i in range(0,len(x)):
+      if x[i].isalpha():
+        x[i]=x[i].upper()
+    return ''.join(x)
+
+poly = "-a+5ab+3a-c-2a"
+def simplify(poly):
+  poly = list(poly)
+  
+  print(poly)
+
+print(simplify(poly))
+
+
+
+
